@@ -3,7 +3,9 @@
 #                        Paul-Christian Burkner                              #
 ##############################################################################
 
-# package and dataset --------------------------------------------------------
+# survival analysis ----------------------------------------------------------
+
+## package and dataset -------------------------------------------------------
 library(brms)
 options(mc.cores = parallel::detectCores())
 
@@ -11,7 +13,7 @@ data("kidney", package = "brms")
 head(kidney)
 
 
-# fit model ------------------------------------------------------------------
+## fit model -----------------------------------------------------------------
 fit1 <- brm(
   formula = time | cens(censored) ~ age * sex + disease + (1 + age|patient),
   data = kidney, family = lognormal(),
@@ -38,14 +40,7 @@ fit1 <- brm(
 # group-level coefficients within a grouping factor are assumed to be correlated.
 
 
-
-
-
-
-
-# analyzing the results ------------------------------------------------------
-
-## retorna o codigo em Stan --------------------------------------------------
+## Stan code -----------------------------------------------------------------
 stancode(fit1)
 standata(fit1)
 
@@ -91,6 +86,43 @@ hypothesis(fit1, "Intercept - age > 0", class = "sd", group = "patient")
 
 
 
+
+
+## LOO to compare models -------------------------------------------------------
+
+# When looking at the correlation between both group-level effects, its distribution 
+# displayed in plot(fit1) and the 95% credible interval in the summary output appear
+# to be rather wide.
+
+# This indicates that there is not enough evidence in the data to reasonably estimate 
+# the correlation.
+
+# Together, the small standard deviation of age and the uncertainty in the correlation raise the
+# question if age should be modeled as a group-specific term at all. 
+
+# To answer this question, we fit another model without this term:
+  
+fit2 <- update(fit1, formula. = ~ . - (1 + age | patient) + (1 | patient))
+
+LOO(fit1, fit2)
+
+
+
+# modeling ordinal data ------------------------------------------------------
+
+## package and dataset -------------------------------------------------------
+library(brms)
+options(mc.cores = parallel::detectCores())
+
+data("inhaler", package = "brms")
+head(inhaler)
+
+## fit model -----------------------------------------------------------------
+
+fit3 <- brm(
+  formula = rating ~ treat + period + carry + (1 | subject),
+  data = inhaler, family = cumulative
+  )
 
 
 
