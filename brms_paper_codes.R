@@ -66,9 +66,14 @@ plot(fit1)
 shinystan::launch_shinystan(fit1)
 
 
+## effects os population-level -----------------------------------------------
+marginal_effects(fit1) # depreciated
+conditional_effects(fit1)
 
 
 
+
+hypothesis(fit1, "Intercept - age > 0", class = "sd", group = "patient")
 
 
 
