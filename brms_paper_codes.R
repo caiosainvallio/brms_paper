@@ -3,7 +3,7 @@
 #                        Paul-Christian Burkner                              #
 ##############################################################################
 
-# package and dataset
+# package and dataset --------------------------------------------------------
 library(brms)
 options(mc.cores = parallel::detectCores())
 
@@ -11,7 +11,7 @@ data("kidney", package = "brms")
 head(kidney)
 
 
-# fit model
+# fit model ------------------------------------------------------------------
 fit1 <- brm(
   formula = time | cens(censored) ~ age * sex + disease + (1 + age|patient),
   data = kidney, family = lognormal(),
@@ -34,6 +34,22 @@ fit1 <- brm(
 # are the coefficients varying with the grouping factor patient. This implies that the intercept
 # of the model as well as the effect of age is supposed to vary between patients. By default,
 # group-level coefficients within a grouping factor are assumed to be correlated.
+
+
+
+
+
+
+
+# analyzing the results ------------------------------------------------------
+
+## retorna o codigo em Stan --------------------------------------------------
+stancode(fit1)
+standata(fit1)
+
+
+## summary the results -------------------------------------------------------
+summary(fit1, waic = TRUE)
 
 
 
