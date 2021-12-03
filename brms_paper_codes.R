@@ -24,6 +24,8 @@ fit1 <- brm(
   iter = 2000,
   chains = 4,
   control = list(adapt_delta = 0.95)
+  # backend = "cmdstanr"
+  # opencl(ids = c(0,0))
 )
 
 
@@ -50,6 +52,14 @@ standata(fit1)
 
 ## summary the results -------------------------------------------------------
 summary(fit1, waic = TRUE)
+
+## Rhat:
+# The Rhat value provides information on the convergence of the algorithm.
+# If Rhat is considerably greater than 1 (i.e., > 1.1), the chains have not yet 
+# converged and it is necessary to run more iterations and/or set stronger priors.
+
+
+
 
 
 
