@@ -124,10 +124,19 @@ fit3 <- brm(
   data = inhaler, family = cumulative
   )
 
+summary(fit3)
 
 
 
 
+fit4 <- brm(
+  formula = rating ~ period + carry + cse(treat) + (1 | subject),
+  data = inhaler, family = sratio(threshold = "equidistant"),
+  prior = set_prior("normal(-1,2)", coef = "treat")
+)
 
+summary(fit4)
+
+plot(fit4)
 
 
