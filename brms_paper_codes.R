@@ -59,6 +59,15 @@ summary(fit1, waic = TRUE)
 # converged and it is necessary to run more iterations and/or set stronger priors.
 
 
+## plot posterior distributions ----------------------------------------------
+plot(fit1)
+
+## more datiled investigation with `shinystan` -------------------------------
+shinystan::launch_shinystan(fit1)
+
+
+
+
 
 
 
