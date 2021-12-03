@@ -73,7 +73,29 @@ conditional_effects(fit1)
 
 
 
+
+## hypothesis test -----------------------------------------------------------
+# Looking at the group-level effects, the standard deviation parameter of age is 
+# suspiciously small. To test whether it is smaller than the standard deviation 
+# parameter of Intercept, we apply the hypothesis method:
+
 hypothesis(fit1, "Intercept - age > 0", class = "sd", group = "patient")
+
+# The one-sided 95% credible interval does not contain zero, thus indicating that the standard
+# deviations differ from each other in the expected direction. In accordance with this finding,
+# the Evid.Ratio shows that the hypothesis being tested (i.e., Intercept - age > 0) is about
+# 50 times more likely than the alternative hypothesis Intercept - age < 0. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
