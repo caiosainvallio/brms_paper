@@ -13,5 +13,9 @@ vignette("brms_customfamilies")
 
 # set prior ------------------------------------------------------------------
 ?set_prior
-
 help("set_prior")
+
+# https://ben18785.shinyapps.io/distribution-zoo/
+  
+  
+  
