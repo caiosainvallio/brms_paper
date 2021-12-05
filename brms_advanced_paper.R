@@ -4,7 +4,9 @@
 ##############################################################################
 
 
+# families used
+vignette("brms_families")
 vignette("brms_customfamilies")
 
-
+?brmsfamily
 
