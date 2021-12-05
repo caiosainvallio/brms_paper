@@ -4,9 +4,14 @@
 ##############################################################################
 
 
-# families used
+# families used --------------------------------------------------------------
 vignette("brms_families")
 vignette("brms_customfamilies")
 
 ?brmsfamily
 
+
+# set prior ------------------------------------------------------------------
+?set_prior
+
+help("set_prior")
