@@ -102,6 +102,22 @@ summary(fit_zinb2)
 ### compare models
 loo(fit_zinb1, fit_zinb2)
 
+## as implied by the Poisson part of the model:
+# trying to fish with children decreases the overall number fish caught.
+
+## as implied by the zero-inflation part:
+# decreases the chance of catching any fish.
+
+plot(conditional_effects(fit_zinb2))
+
+
+vignette("brms_distreg")
+
+
+
+
+
+
 
 
 
