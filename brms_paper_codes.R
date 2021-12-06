@@ -13,6 +13,7 @@ data("kidney", package = "brms")
 head(kidney)
 
 
+
 ## fit model -----------------------------------------------------------------
 fit1 <- brm(
   formula = time | cens(censored) ~ age * sex + disease + (1 + age|patient),
@@ -25,7 +26,7 @@ fit1 <- brm(
   warmup = 1000,
   iter = 2000,
   chains = 4,
-  control = list(adapt_delta = 0.95)
+  control = list(adapt_delta = 0.95),
   # backend = "cmdstanr"
   # opencl(ids = c(0,0))
 )
@@ -139,4 +140,4 @@ summary(fit4)
 
 plot(fit4)
 
-
+stancode(fit4)

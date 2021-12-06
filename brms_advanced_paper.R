@@ -18,7 +18,7 @@ help("set_prior")
 # https://ben18785.shinyapps.io/distribution-zoo/
   
 
-# multilevel formula syntax ----------------------------------------------------
+# multilevel formula syntax --------------------------------------------------
   
 
 # response ~ pterms + (gterms | group)
@@ -29,5 +29,13 @@ help("set_prior")
 
 # `gterms` contain so called group-level effects, assumed to vary across 
 # the grouping variables specified in group
+
+
+
+
+
+
+
+
 
 
