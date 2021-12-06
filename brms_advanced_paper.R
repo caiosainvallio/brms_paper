@@ -32,7 +32,8 @@ help("set_prior")
 # `gterms` contain so called group-level effects (frequentist random-effects),
 # assumed to vary across the grouping variables specified in group.
 
-help(brmsformula)
+help("brmsformula")
+help("addition-terms")
 
 
 
