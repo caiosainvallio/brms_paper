@@ -2,6 +2,8 @@
 #     brms: An R Package for Bayesian Multilevel Models Using Stan           #
 #                        Paul-Christian Burkner                              #
 ##############################################################################
+vignette("brms_overview")
+
 
 # survival analysis ----------------------------------------------------------
 
