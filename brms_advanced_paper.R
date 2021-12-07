@@ -160,14 +160,31 @@ conditional_effects(fit_rent1, surface = TRUE)
 
 
 
+# example 3 - insurance loss payments ----------------------------------------
+
+# predicts the growth of cumulative insurance loss payments over time.
+
+url <- paste0("https://raw.githubusercontent.com/mages/",
+              "diesunddas/master/Data/ClarkTriangle.csv")
+loss <- read.csv(url)
+head(loss)
+
+nlform <- bf(cum ~ ult * (1 - exp(-(dev / theta)^omega)),
+             ult ~ 1 + (1|AY), omega ~ 1, theta ~ 1, nl = TRUE)
 
 
 
+nlprior <- c(prior(normal(5000, 1000), nlpar = "ult"),
+             prior(normal(1, 2), nlpar = "omega"),
+             prior(normal(45, 10), nlpar = "theta"))
 
 
+system.time(
+  fit_loss1 <- brm(formula = nlform, data = loss, family = gaussian(),
+                   prior = nlprior, control = list(adapt_delta = 0.9))
+)
 
-
-
+summary(fit_loss1)
 
 
 
