@@ -52,7 +52,7 @@ library(brms)
 options(mc.cores = parallel::detectCores())
 library(tidyverse)
 
-## example 1 - catching fish -------------------------------------------------
+# example 1 - catching fish --------------------------------------------------
 # zero-inflated and hurdle models.
 
 
@@ -98,9 +98,8 @@ system.time(
 
 summary(fit_zinb2)
 
-
-### compare models
-loo(fit_zinb1, fit_zinb2)
+conditional_effects(fit_zinb2)
+zinb$child %>% hist
 
 ## as implied by the Poisson part of the model:
 # trying to fish with children decreases the overall number fish caught.
@@ -108,10 +107,20 @@ loo(fit_zinb1, fit_zinb2)
 ## as implied by the zero-inflation part:
 # decreases the chance of catching any fish.
 
-plot(conditional_effects(fit_zinb2))
+
+
+### compare models
+loo(fit_zinb1, fit_zinb2)
+
 
 
 vignette("brms_distreg")
+
+
+
+# exemple 2 - housing rents --------------------------------------------------
+
+
 
 
 
