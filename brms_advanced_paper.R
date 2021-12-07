@@ -120,6 +120,45 @@ vignette("brms_distreg")
 
 # exemple 2 - housing rents --------------------------------------------------
 
+# The data contains information on roughly 3000 apartments
+# 
+# absolute rent (rent)
+# rent per square meter (rentsqm)
+# size of the apartment (area)
+# construction year (yearc)
+# the district in Munich where the apartment is located (district)
+
+data("rent99", package = "gamlss.data")
+head(rent99)
+
+# we wish to predict the rent per square meter using the following explanatory 
+# variables: size of the apartment, the construction year, and the district in
+# which the apartment is located.
+
+# As the effect of apartment size and construction year predictors is of unknown
+# non-linear form, we model these variables using a bivariate tensor spline.
+
+# The district is accounted for using a varying intercept.
+
+system.time(
+  fit_rent1 <- brm(rentsqm ~ t2(area, yearc) + (1|district), 
+                   data = rent99)
+)
+
+summary(fit_rent1)
+
+# For models including splines, the output of summary gives limited information
+
+
+# First, the credible intervals of the standard deviations of the coefficients 
+# forming the splines (under 'Smooth Terms') are sufficiently far away from zero
+# to indicate non-linearity in the combined effect of area and yearc.
+
+
+conditional_effects(fit_rent1, surface = TRUE)
+
+
+
 
 
 
