@@ -20,9 +20,20 @@
 # responses for all conditions/time-points.
 
 
-## Nested designs 
-# refer to the between-subject variable. Generally this is a higher-level 
+## Nested designs ------------------------------------------------------------
+# Refer to the between-subject variable. Generally this is a higher-level 
 # variable that subjects or items are grouped under.
+
+
+## Fixed effects (population-level) ------------------------------------------
+# Are, essentially, your predictor variables. This is the effect you are 
+# interested in after accounting for random variability (hence, fixed).
+
+
+## Random effects (group-level) ----------------------------------------------
+# Are best defined as noise in your data. These are effects that arise from 
+# uncontrollable variability within the sample. Subject level variability is 
+# often a random effect.
 
 
 
