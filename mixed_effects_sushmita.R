@@ -102,14 +102,3 @@ library (ggplot2) # GGplot package for visualizing data
 # random slopes and intercepts can be correlated.
 
 
-
-
-
-
-
-
-
-
-
-
-
