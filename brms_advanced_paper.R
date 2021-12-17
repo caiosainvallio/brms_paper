@@ -38,11 +38,9 @@ help("addition-terms")
 
 
 
-
 ## monotonic measurement error -----------------------------------------------
 vignette("brms_monotonic")
 # response ~ mo(pterms) + (gterms | group)
-
 
 
 
@@ -83,7 +81,6 @@ conditional_effects(fit_zinb1)
 # groups with more children catch less fish
 # The zero-inflation probability zi is pretty large with a mean of 41%
 zinb$count %>% hist
-
 
 
 
@@ -185,8 +182,6 @@ system.time(
 )
 
 summary(fit_loss1)
-
-
 
 
 
